@@ -28,7 +28,7 @@
     html{scroll-behavior:smooth}
     body{
       background:
-        radial-gradient(120% 46% at 50% -6%, rgba(255,122,0,.07) 0%, rgba(255,122,0,0) 64%),
+        radial-gradient(120% 46% at 50% -6%, rgba(255,122,0,.115) 0%, rgba(255,122,0,0) 64%),
         linear-gradient(180deg,var(--bg-2) 0%,var(--bg) 45%);
       background-attachment:fixed;
       color:var(--text);
@@ -101,15 +101,16 @@
         rgba(11,12,16,.8) 100%);
       pointer-events:none;z-index:1;
     }
-    /* Glow por cima da arte. Bem mais suave que o antigo (alpha .14 -> .075)
-       e com queda longa, pra assentar na imagem em vez de lavar ela. */
+    /* Glow por cima da arte. A intensidade fica no --glow: 1 e o padrao,
+       abaixe pra apagar e suba pra acender, sem mexer no gradiente. */
     .art .glow{
       position:absolute;inset:0;pointer-events:none;z-index:2;
+      opacity:var(--glow,1);
       background:radial-gradient(125% 62% at 50% -10%,
-        rgba(255,138,26,.075) 0%,
-        rgba(255,122,0,.036) 38%,
-        rgba(255,122,0,.012) 62%,
-        rgba(255,122,0,0) 82%);
+        rgba(255,145,40,.19) 0%,
+        rgba(255,122,0,.105) 34%,
+        rgba(255,122,0,.045) 58%,
+        rgba(255,122,0,0) 80%);
       mix-blend-mode:screen;
     }
     .art.vazio{
