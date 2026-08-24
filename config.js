@@ -12,6 +12,12 @@ window.LP_CONFIG = {
   arte: 'assets/arte-placeholder.svg',
   arteAjuste: 'contain',   // 'contain' = arte inteira | 'cover' = preenche e corta
 
+  /* ===== ABA DO NAVEGADOR =====
+     Título que aparece na aba e quando o link é compartilhado.
+     Sem valor em dinheiro aqui de propósito: o que fica exposto é
+     a aba do celular de quem abriu, não a oferta. */
+  tituloAba: 'Bilhete do dia',
+
   /* ===== SELO ===== */
   selo: 'Bilhete disponível',
 
