@@ -54,16 +54,17 @@ window.LP_CONFIG = {
     regras: [
       'Vale só pra <b>conta nova</b>, criada hoje pelo botão desta página.',
       'Uma aposta protegida <b>por pessoa</b>, neste bilhete.',
-      'Se bater, o pagamento cai direto na sua conta da casa. <b>O lucro é todo seu.</b>'
+      'Se bater, <b>quem paga somos nós</b>. O prêmio é por nossa conta.'
     ],
     ctaLabel: 'Pedir reembolso no suporte'
   },
 
   /* ===== POR QUE EU FAÇO ISSO =====
-     Essa é a resposta pra "qual a pegadinha". '' esconde a seção. */
+     Seção DESLIGADA. O bloco existe na página e volta sozinho se você
+     preencher o texto de novo. '' mantém escondido. */
   porque: {
-    titulo: 'Por que eu devolveria seu dinheiro?',
-    texto: 'Porque a casa me paga comissão quando você cria uma conta pelo meu link. Eu ganho de um jeito ou de outro. Por isso eu consigo bancar o seu risco — e por isso não preciso te empurrar nada.'
+    titulo: '',
+    texto: ''
   },
 
   /* ===== PERGUNTAS =====
@@ -76,7 +77,10 @@ window.LP_CONFIG = {
     },
     {
       p: 'Se bater, quem me paga?',
-      r: 'A casa. O pagamento cai direto na sua conta e eu não pego nada do seu lucro.'
+      // Somos nós que pagamos o prêmio, não a casa.
+      // Se o pagamento for via Pix igual ao reembolso, vale dizer aqui —
+      // saber COMO recebe tira a última dúvida antes do cadastro.
+      r: 'Nós. Se o bilhete bater, o prêmio é pago por nossa conta.'
     },
     {
       p: 'Quanto eu preciso depositar?',
