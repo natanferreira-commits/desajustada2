@@ -33,8 +33,14 @@ window.LP_CONFIG = {
 
   /* ===== QUEM ESTÁ FALANDO ===== */
   autor: {
-    // Foto opcional em /assets. '' esconde o círculo e o texto ocupa a linha toda.
-    foto: '',
+    // Foto opcional em /assets, largura cheia do card, recortada pelo centro.
+    // Arquivo ausente ou quebrado remove a figura inteira, sem deixar buraco.
+    foto: 'assets/caumo-instituto.jpg',
+
+    // Legenda abaixo da foto. '' esconde só a legenda, a foto fica.
+    // Descreva só o que dá pra ver — não afirme mais do que a imagem mostra.
+    fotoLegenda: 'Instituto Projeto Neymar Jr. — São Paulo, junho de 2024',
+
     nome: 'Mateus Caumo',
     titulo: 'Apostador profissional há mais de 13 anos',
     texto: 'Eu não acho esses desajustes por sorte. É o que eu faço todo dia há mais de 13 anos: comparar linha por linha, casa por casa, até achar uma que está pagando errado. Quando acho, eu passo pra você antes da casa corrigir.',

@@ -162,11 +162,18 @@
     }
 
     /* ===== Quem é ===== */
-    .autor{display:flex;align-items:center;gap:13px}
-    .autor .foto{
-      flex:0 0 auto;width:62px;height:62px;border-radius:50%;
-      object-fit:cover;border:2px solid rgba(255,122,0,.5);
+    /* A foto e o argumento principal desta seção, então ela ocupa a
+       largura do card. Recorte pelo centro: é onde estão os rostos. */
+    .autor-midia{margin:-4px 0 14px}
+    .autor-midia img{
+      display:block;width:100%;
+      max-height:300px;object-fit:cover;object-position:center;
+      border-radius:12px;border:1px solid var(--border);
       background:var(--bg-2);
+    }
+    .autor-legenda{
+      margin-top:8px;
+      font-size:10.5px;line-height:1.4;color:#5b6270;text-align:center;
     }
     .autor .nome{font-size:13px;font-weight:700;color:var(--text)}
     .autor .cargo{font-size:11.5px;color:var(--hot-2);font-weight:600;line-height:1.3;margin-top:2px}
@@ -349,12 +356,13 @@
     <section class="section" id="quem" hidden>
       <h2>Quem está <span class="hl">te falando isso</span></h2>
       <div class="card">
+        <figure class="autor-midia" id="autor-midia" hidden>
+          <img id="autor-foto" src="" alt="" loading="lazy" />
+          <figcaption class="autor-legenda" id="autor-legenda"></figcaption>
+        </figure>
         <div class="autor">
-          <img class="foto" id="autor-foto" src="" alt="" hidden />
-          <div>
-            <div class="nome" id="autor-nome"></div>
-            <div class="cargo" id="autor-cargo"></div>
-          </div>
+          <div class="nome" id="autor-nome"></div>
+          <div class="cargo" id="autor-cargo"></div>
         </div>
         <p class="autor-texto" id="autor-texto"></p>
         <div class="selos" id="autor-selos"></div>
@@ -445,10 +453,17 @@
         set("autor-nome", A.nome);
         set("autor-cargo", A.titulo);
         set("autor-texto", A.texto);
+        /* Foto ausente ou quebrada tira a figura inteira, pra não sobrar
+           moldura vazia nem legenda órfã. */
         if (A.foto) {
+          var midia = el("autor-midia");
           var f = el("autor-foto");
-          f.addEventListener("error", function(){ f.remove(); });
-          f.src = A.foto; f.hidden = false;
+          f.addEventListener("error", function(){ midia.remove(); });
+          f.alt = A.fotoLegenda || A.titulo || "";
+          f.src = A.foto;
+          if (A.fotoLegenda) { el("autor-legenda").textContent = A.fotoLegenda; }
+          else { el("autor-legenda").remove(); }
+          midia.hidden = false;
         }
         var selos = (A.selos || []).filter(Boolean);
         if (selos.length) {
