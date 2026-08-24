@@ -59,8 +59,7 @@ window.LP_CONFIG = {
     // As regras da proteção. Item vazio some.
     regras: [
       'Vale só pra <b>conta nova</b>, criada hoje pelo botão desta página.',
-      'Uma aposta protegida <b>por pessoa</b>, neste bilhete.',
-      'Se bater, <b>quem paga somos nós</b>. O prêmio é por nossa conta.'
+      'Uma aposta protegida <b>por pessoa</b>, neste bilhete.'
     ],
     ctaLabel: 'Pedir reembolso no suporte'
   },
@@ -80,13 +79,6 @@ window.LP_CONFIG = {
     {
       p: 'Já tenho conta na BetWarrior. Vale pra mim?',
       r: 'A proteção vale só pra conta nova criada hoje pelo botão desta página. O bilhete continua disponível pra você, mas sem a devolução.'
-    },
-    {
-      p: 'Se bater, quem me paga?',
-      // Somos nós que pagamos o prêmio, não a casa.
-      // Se o pagamento for via Pix igual ao reembolso, vale dizer aqui —
-      // saber COMO recebe tira a última dúvida antes do cadastro.
-      r: 'Nós. Se o bilhete bater, o prêmio é pago por nossa conta.'
     },
     {
       p: 'Quanto eu preciso depositar?',
