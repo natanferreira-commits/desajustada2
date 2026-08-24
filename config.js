@@ -9,7 +9,7 @@ window.LP_CONFIG = {
 
   /* ===== ARTE DO TOPO ===== */
   // Vertical, ideal 1080x1620 (2:3). Evite 9:16: sobra barra nas laterais.
-  arte: 'assets/arte-placeholder.svg',
+  arte: 'assets/arte-30k.png',
   arteAjuste: 'contain',   // 'contain' = arte inteira | 'cover' = preenche e corta
 
   /* ===== ABA DO NAVEGADOR =====
