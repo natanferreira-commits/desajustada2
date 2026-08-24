@@ -16,7 +16,7 @@ window.LP_CONFIG = {
      Título que aparece na aba e quando o link é compartilhado.
      Sem valor em dinheiro aqui de propósito: o que fica exposto é
      a aba do celular de quem abriu, não a oferta. */
-  tituloAba: 'Bilhete do dia',
+  tituloAba: 'Bilhete seguro',
 
   /* ===== SELO ===== */
   selo: 'Bilhete disponível',
@@ -110,17 +110,20 @@ window.LP_CONFIG = {
   ],
 
   /* ===== LINKS ===== */
-  link: 'https://link.arenaaffiliates.com.br/V5XYSZP',
+  // Link de tracking da BetWarrior com o cupom da combinada montado.
+  // O trecho depois de 'coupon=' carrega as 6 seleções do bilhete: mexer
+  // nele troca a aposta que abre no app da casa.
+  // Vale pros três botões da página (topo, fim e o fixo do rodapé).
+  link: 'https://record.betwarrioraffiliates.bet/_xW2WawVor-ke1d-0ioM--WNd7ZgqdRLk/13/??coupon=combination|4305933478,4305933359,4287937689,4287937707,4287937653,4287961466|0|replace',
   linkSuporte: 'https://t.me/suportecaumobot?start=6a8c9cf2c1a13ec6c4054fd1',
 
   /* ===== RODAPÉ ===== */
   termos: 'Proteção promocional independente da casa de apostas, exclusiva para contas novas criadas no mesmo dia através desta página e limitada a uma aposta por pessoa neste bilhete. Devolução via Pix em até 48h mediante comprovante de criação da conta no dia e print do bilhete redado. Apostas esportivas envolvem risco e não existe ganho garantido. Aposte apenas o que você pode perder. Conteúdo destinado a maiores de 18 anos. Este site não faz parte do Facebook Inc. nem é endossado pelo Facebook de nenhuma maneira.',
 
   // Repassa utm_* e fbclid pro link da casa.
-  // O link atual e um encurtador limpo (sem query string), entao anexar
-  // '?utm_source=...' e seguro — nao ha cupom pra quebrar. Ligar isso faz
-  // a origem do clique chegar na plataforma de afiliado.
-  // Deixado desligado so porque e mudanca de comportamento do link: ligue
-  // quando quiser fechar a atribuicao.
+  // ATENÇÃO: o link agora tem query string (o cupom da combinada). Se
+  // ligar isso, o código anexa '&utm_source=...' no fim, depois do
+  // 'coupon='. Testa o link resultante numa aba antes de deixar ligado:
+  // se a casa não gostar do parâmetro extra, o bilhete abre vazio.
   repassarParametros: false
 };
