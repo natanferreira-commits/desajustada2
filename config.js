@@ -102,13 +102,17 @@ window.LP_CONFIG = {
   ],
 
   /* ===== LINKS ===== */
-  link: 'https://record.betwarrioraffiliates.bet/_xW2WawVor-n-dmz6Y9QluGNd7ZgqdRLk/19/??coupon=combination|4292788997,4292789098,4293977048,4292758440,4292761151,4292755856|0|replace',
-  linkSuporte: 'https://t.me/suportecaumobot?start=6a871fc6f017077da5066e79',
+  link: 'https://link.arenaaffiliates.com.br/V5XYSZP',
+  linkSuporte: 'https://t.me/suportecaumobot?start=6a8c9cf2c1a13ec6c4054fd1',
 
   /* ===== RODAPÉ ===== */
   termos: 'Proteção promocional independente da casa de apostas, exclusiva para contas novas criadas no mesmo dia através desta página e limitada a uma aposta por pessoa neste bilhete. Devolução via Pix em até 48h mediante comprovante de criação da conta no dia e print do bilhete redado. Apostas esportivas envolvem risco e não existe ganho garantido. Aposte apenas o que você pode perder. Conteúdo destinado a maiores de 18 anos. Este site não faz parte do Facebook Inc. nem é endossado pelo Facebook de nenhuma maneira.',
 
-  // Repassa utm_* e fbclid pro link da casa. Desligado: o link tem '??coupon='
-  // e anexar '&utm_...' precisa de teste pra confirmar que o cupom carrega.
+  // Repassa utm_* e fbclid pro link da casa.
+  // O link atual e um encurtador limpo (sem query string), entao anexar
+  // '?utm_source=...' e seguro — nao ha cupom pra quebrar. Ligar isso faz
+  // a origem do clique chegar na plataforma de afiliado.
+  // Deixado desligado so porque e mudanca de comportamento do link: ligue
+  // quando quiser fechar a atribuicao.
   repassarParametros: false
 };
