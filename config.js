@@ -24,7 +24,7 @@ window.LP_CONFIG = {
   /* ===== PRIMEIRO FOLD ===== */
   // *entre asteriscos* sai laranja, _entre underlines_ sai verde.
   // Use \n (barra + n) pra quebrar a linha da headline.
-  headline: '*R$ 3.000* na sua mão\nou os _R$ 30_ de volta no Pix',
+  headline: '*R$ 5.000* na sua mão\nou os _R$ 50,00_ de volta',
   oddDe: 'odd 13.50',
   oddPara: 'odd 102.7',
   ctaLabel: 'Quero esse bilhete',

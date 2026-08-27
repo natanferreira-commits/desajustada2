@@ -139,10 +139,9 @@
     }
     h1{
       font-family:"Anton",Impact,sans-serif;font-weight:400;
-      /* 7.9vw e o maior tamanho em que "ou os R$ 30 de volta no Pix" ainda
-         cabe numa linha so em tela de 320px. Acima disso a headline quebra
-         em 3 linhas sozinha. */
-      font-size:clamp(24px,7.9vw,36px);line-height:1.03;
+      /* Se trocar a headline, confira que cada linha ainda cabe sozinha em
+         tela de 320px — passando da largura ela quebra em linhas a mais. */
+      font-size:clamp(28px,8.6vw,40px);line-height:1.03;
       text-transform:uppercase;letter-spacing:.01em;
       text-shadow:0 2px 20px rgba(0,0,0,.7);   /* legível sobre a foto */
     }
