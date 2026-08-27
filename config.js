@@ -8,7 +8,9 @@
 window.LP_CONFIG = {
 
   /* ===== ARTE DO TOPO ===== */
-  // Vertical, ideal 1080x1620 (2:3). Evite 9:16: sobra barra nas laterais.
+  // Arte vertical 1080x1920. Ela aparece inteira, sem corte lateral.
+  // O conteudo dela (fita, rosto, bilhetes) precisa terminar ate ~60%
+  // da altura: abaixo disso mora o texto da pagina.
   arte: 'assets/arte-100.webp',
   arteAjuste: 'contain',
 
@@ -18,7 +20,7 @@ window.LP_CONFIG = {
 
   // Quanto puxar a arte pra cima, em % da altura da tela. Sobe os
   // bilhetes pra eles nao ficarem atras da headline. 0 desliga.
-  arteSubir: '0%',  // preenche a caixa; o corte é vertical, os bilhetes ficam inteiros
+  arteSubir: '6.5%',
 
   /* ===== ABA DO NAVEGADOR =====
      Título que aparece na aba e quando o link é compartilhado.
@@ -125,7 +127,7 @@ window.LP_CONFIG = {
   // nele troca a aposta que abre no app da casa.
   // Vale pros três botões da página (topo, fim e o fixo do rodapé).
   link: 'https://record.betwarrioraffiliates.bet/_xW2WawVor-mg6egUu7vkL2Nd7ZgqdRLk/17/??coupon=combination|4305177706,4305177534,4305160228,4305224442,4305227257,4305224360,4305719582,4305719695,4305719588|0|replace',
-  linkSuporte: 'https://t.me/suportecaumobot?start=6a8c9cf2c1a13ec6c4054fd1',
+  linkSuporte: 'https://t.me/suportecaumobot?start=6a90984af1c097187207b142',
 
   /* ===== RODAPÉ ===== */
   termos: 'Proteção promocional independente da casa de apostas, exclusiva para contas novas criadas no mesmo dia através desta página e limitada a uma aposta por pessoa neste bilhete. Devolução via Pix em até 48h mediante comprovante de criação da conta no dia e print do bilhete redado. Apostas esportivas envolvem risco e não existe ganho garantido. Aposte apenas o que você pode perder. Conteúdo destinado a maiores de 18 anos. Este site não faz parte do Facebook Inc. nem é endossado pelo Facebook de nenhuma maneira.',
