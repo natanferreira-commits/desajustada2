@@ -19,7 +19,7 @@ window.LP_CONFIG = {
   tituloAba: 'Bilhete seguro',
 
   /* ===== SELO ===== */
-  selo: 'Bilhete disponível',
+  selo: '',
 
   /* ===== PRIMEIRO FOLD ===== */
   // *entre asteriscos* sai laranja, _entre underlines_ sai verde.
