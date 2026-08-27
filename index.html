@@ -9,16 +9,28 @@
   <meta name="description" content="Bilhete do dia com odd fora da curva." />
   <title>Bilhete seguro</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://connect.facebook.net" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Anton&family=Sora:wght@400;600;700&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Sora:wght@400;600;700&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Sora:wght@400;600;700&display=swap" /></noscript>
+  <!-- A arte e o LCP. Declarada aqui em vez de so no config pra o
+       navegador achar ela na primeira leitura do HTML e ja comecar a
+       baixar, sem esperar o JS rodar. -->
+  <link rel="preload" as="image" href="assets/arte-100.webp" fetchpriority="high" />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/anton-latin.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/sora-latin.woff2" crossorigin />
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ff7a00'/%3E%3Cpath d='M18 42 L32 22 L46 42' fill='none' stroke='%23fff' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 
   <style>
+    /* Fontes servidas do proprio dominio. Antes vinham do Google, o que
+       custava DNS + TLS em dois dominios antes de qualquer letra
+       aparecer. Sora e variavel: um arquivo cobre 400 a 700. */
+    @font-face{
+      font-family:'Anton';font-style:normal;font-weight:400;font-display:swap;
+      src:url('assets/fonts/anton-latin.woff2') format('woff2');
+    }
+    @font-face{
+      font-family:'Sora';font-style:normal;font-weight:400 700;font-display:swap;
+      src:url('assets/fonts/sora-latin.woff2') format('woff2');
+    }
+
     :root{
       --bg:#0b0c10; --bg-2:#12141a; --card:#171a21; --border:#262b34;
       --hot:#ff7a00; --hot-2:#ff9d33; --hot-deep:#c25a00;
@@ -182,12 +194,16 @@
     }
     .cta:active{background:#f07300;transform:translateY(2px);border-bottom-width:1px}
     .cta::after{
-      content:"";position:absolute;top:0;bottom:0;left:-60%;width:52%;
+      content:"";position:absolute;top:0;bottom:0;left:0;width:52%;
       background:linear-gradient(100deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.5) 50%,rgba(255,255,255,0) 100%);
-      transform:skewX(-18deg);pointer-events:none;
+      transform:translateX(-150%) skewX(-18deg);pointer-events:none;will-change:transform;
       animation:brilho 3s ease-in-out infinite;
     }
-    @keyframes brilho{ 0%{left:-60%} 26%{left:135%} 100%{left:135%} }
+    @keyframes brilho{
+      0%   { transform:translateX(-150%) skewX(-18deg) }
+      26%  { transform:translateX(300%) skewX(-18deg) }
+      100% { transform:translateX(300%) skewX(-18deg) }
+    } 26%{left:135%} 100%{left:135%} }
 
     /* seta convidando a rolar — sem ela o fold fechado esconde as seções */
     .maisabaixo{
@@ -365,7 +381,27 @@
 
   <!-- ===== Meta Pixel ===== -->
   <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    (function(f,b,e,v){
+      if(f.fbq)return;
+      var n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n; n.push=n; n.loaded=!0; n.version='2.0'; n.queue=[];
+
+      /* O fbevents.js pesa ~70KB e nao pode competir com a arte pelo inicio
+         do carregamento. As chamadas abaixo ficam na fila e disparam assim
+         que ele chega. Sobe no primeiro toque tambem, pra nunca perder o
+         Lead de quem clica rapido. */
+      var subiu=false;
+      function sobe(){
+        if(subiu)return; subiu=true;
+        var t=b.createElement(e); t.async=!0; t.src=v;
+        var s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s);
+      }
+      f.addEventListener('load', function(){ setTimeout(sobe, 700); }, {once:true});
+      ['pointerdown','touchstart','keydown'].forEach(function(ev){
+        f.addEventListener(ev, sobe, {once:true, passive:true});
+      });
+      setTimeout(sobe, 4000);
+    })(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init','23904277939190271');
     fbq('init','2392917637871836');
     fbq('track','PageView');
@@ -386,7 +422,7 @@
     </div>
 
     <div class="art" id="art">
-      <img id="art-img" src="" alt="" fetchpriority="high" decoding="async" />
+      <img id="art-img" src="assets/arte-100.webp" width="1080" height="1920" alt="" fetchpriority="high" decoding="async" />
       <span class="glow"></span>
     </div>
 
@@ -488,7 +524,12 @@
         art.textContent = "espaço da arte — coloque o arquivo em /assets e aponte em config.js";
       }
       if (!C.arte) { semArte(); }
-      else { img.addEventListener("error", semArte); img.src = C.arte; }
+      else {
+        img.addEventListener("error", semArte);
+        /* o src ja vem no HTML pro navegador achar cedo. So troca se o
+           config apontar pra outro arquivo, senao baixaria duas vezes. */
+        if (img.getAttribute("src") !== C.arte) img.src = C.arte;
+      }
 
       /* ===== Primeiro fold ===== */
       if (C.selo) { set("selo-txt", C.selo); }
@@ -675,12 +716,15 @@
   <script>
     (function(){
       var HUB='https://hub-omega-sooty.vercel.app';
+      /* medicao propria: espera a pagina carregar pra nao roubar banda */
+      addEventListener('load', function(){ setTimeout(function(){
       fetch(HUB+'/api/track',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({page:'desajustada2',event:'pageview',referrer:document.referrer}),
         keepalive:true
       }).catch(function(){});
+      }, 1200); }, {once:true});
     })();
   </script>
 </body>
