@@ -10,7 +10,15 @@ window.LP_CONFIG = {
   /* ===== ARTE DO TOPO ===== */
   // Vertical, ideal 1080x1620 (2:3). Evite 9:16: sobra barra nas laterais.
   arte: 'assets/arte-100.webp',
-  arteAjuste: 'cover',  // preenche a caixa; o corte é vertical, os bilhetes ficam inteiros
+  arteAjuste: 'cover',
+
+  // Enquadramento vertical da arte de fundo. Menor puxa a imagem pra
+  // cima, maior puxa pra baixo. Ex: '30%', '42%', '55%'.
+  arteFoco: '38%',
+
+  // Quanto puxar a arte pra cima, em % da altura da tela. Sobe os
+  // bilhetes pra eles nao ficarem atras da headline. 0 desliga.
+  arteSubir: '17%',  // preenche a caixa; o corte é vertical, os bilhetes ficam inteiros
 
   /* ===== ABA DO NAVEGADOR =====
      Título que aparece na aba e quando o link é compartilhado.

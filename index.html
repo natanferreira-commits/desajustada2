@@ -45,7 +45,7 @@
       position:relative;                   /* âncora da arte de fundo */
       height:100svh; height:100dvh;
       max-width:460px;margin:0 auto;
-      display:flex;flex-direction:column;
+      display:flex;flex-direction:column;justify-content:flex-end;
       padding:0 16px 10px;
     }
 
@@ -74,38 +74,35 @@
     .clock{font-size:10.5px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
 
     /* ===== Arte =====
-       Camada de fundo: ocupa a tela inteira, de ponta a ponta, por baixo
-       do conteúdo. A imagem entra pela largura cheia e ancorada no topo.
-       Não usamos corte lateral de propósito: os bilhetes vao de 6% a 94%
-       da largura da arte, então qualquer crop comeria a borda deles.
-       O preto da arte é o mesmo preto do fundo, então a emenda não
-       aparece e a tela lê como uma imagem só. */
+       Camada de fundo de verdade: cobre a tela inteira por tras do
+       conteudo. Antes ela era um bloco no fluxo e terminava num corte
+       seco no meio da tela. */
     .art{
-      flex:1 1 auto;min-height:0;
-      /* Elástica de novo: ela cede altura quando o texto precisa, então o
-         bloco de venda nunca sobe por cima dos bilhetes. Foi exatamente
-         isso que quebrou quando a arte tinha altura fixa. */
-      position:relative;overflow:hidden;
-      margin-left:-16px;margin-right:-16px;   /* ponta a ponta, fura o padding */
-      /* Teto: acima da altura natural da arte na largura cheia o cover
-         começaria a comer a borda lateral dos bilhetes. */
-      max-height:min(150vw,690px);
+      position:absolute;inset:0;z-index:0;
+      margin:0;max-height:none;overflow:hidden;
     }
     .art img{
       width:100%;height:100%;display:block;
       object-fit:var(--art-fit,cover);
-      /* Quando falta altura, o corte tira mais do topo do que da base.
-         Prioridade são os bilhetes: eles são a prova da oferta. Em tela
-         pequena o que se perde é o alto do cabelo, e não o rosto. */
-      object-position:50% 42%;
+      /* --art-y sobe ou desce o enquadramento: menor puxa a arte pra
+         cima, maior puxa pra baixo. Vem do config. */
+      object-position:50% var(--art-y,42%);
+      /* Puxa a arte pra cima pra os bilhetes terminarem antes do
+         texto. O vao que sobra embaixo cai no preto do fundo, que e
+         o mesmo preto da arte, entao a emenda nao aparece. */
+      transform:translateY(var(--art-subir,0));
     }
-    /* Véu de baixo: só amacia o corte da arte contra o fundo. Curto de
-       propósito, pra não escurecer os bilhetes. */
+    /* Veu: transparente onde estao os bilhetes e solido embaixo, pra o
+       texto assentar sem tapar a prova da oferta. */
     .art::after{
-      content:"";position:absolute;left:0;right:0;bottom:0;height:18%;
+      content:"";position:absolute;inset:0;
       background:linear-gradient(180deg,
         rgba(11,12,16,0) 0%,
-        rgba(11,12,16,.55) 100%);
+        rgba(11,12,16,0) 44%,
+        rgba(11,12,16,.35) 56%,
+        rgba(11,12,16,.78) 68%,
+        rgba(11,12,16,.95) 80%,
+        var(--bg) 100%);
       pointer-events:none;z-index:1;
     }
     /* Glow por cima da arte. A intensidade fica no --glow: 1 e o padrao,
@@ -355,13 +352,6 @@
        os bilhetes, e o primeiro fold deixa de ser tela cheia exata. */
     @media (max-height:600px){
       .hero{height:auto;min-height:100dvh}
-      /* trava no piso: sem crescer, pra a rolagem ficar curta e o botão
-         continuar perto da dobra */
-      .art{flex:0 0 auto;height:min(78vw,359px);min-height:0;max-height:none}
-      /* Tela baixa nao cabe rosto e bilhete ao mesmo tempo. O corte desce
-         pra garantir a linha de valores do bilhete, que e a prova da
-         oferta — perde-se o alto da cabeca, nao o numero. */
-      .art img{object-position:50% 50%}
       .pitch{margin-bottom:0}
     }
     @media (prefers-reduced-motion:reduce){
@@ -490,6 +480,8 @@
       /* ===== Arte ===== */
       var art = el("art"), img = el("art-img");
       art.style.setProperty("--art-fit", C.arteAjuste === "cover" ? "cover" : "contain");
+      if (C.arteFoco) art.style.setProperty("--art-y", C.arteFoco);
+      if (C.arteSubir) art.style.setProperty("--art-subir", "-" + String(C.arteSubir).replace("-", ""));
       function semArte(){
         if (img.parentNode) img.remove();
         art.classList.add("vazio");
