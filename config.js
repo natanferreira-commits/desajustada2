@@ -10,15 +10,15 @@ window.LP_CONFIG = {
   /* ===== ARTE DO TOPO ===== */
   // Vertical, ideal 1080x1620 (2:3). Evite 9:16: sobra barra nas laterais.
   arte: 'assets/arte-100.webp',
-  arteAjuste: 'cover',
+  arteAjuste: 'contain',
 
   // Enquadramento vertical da arte de fundo. Menor puxa a imagem pra
   // cima, maior puxa pra baixo. Ex: '30%', '42%', '55%'.
-  arteFoco: '38%',
+  arteFoco: '0%',
 
   // Quanto puxar a arte pra cima, em % da altura da tela. Sobe os
   // bilhetes pra eles nao ficarem atras da headline. 0 desliga.
-  arteSubir: '17%',  // preenche a caixa; o corte é vertical, os bilhetes ficam inteiros
+  arteSubir: '7%',  // preenche a caixa; o corte é vertical, os bilhetes ficam inteiros
 
   /* ===== ABA DO NAVEGADOR =====
      Título que aparece na aba e quando o link é compartilhado.
@@ -124,7 +124,7 @@ window.LP_CONFIG = {
   // O trecho depois de 'coupon=' carrega as 6 seleções do bilhete: mexer
   // nele troca a aposta que abre no app da casa.
   // Vale pros três botões da página (topo, fim e o fixo do rodapé).
-  link: 'https://record.betwarrioraffiliates.bet/_xW2WawVor-ke1d-0ioM--WNd7ZgqdRLk/13/??coupon=combination|4305933478,4305933359,4287937689,4287937707,4287937653,4287961466|0|replace',
+  link: 'https://record.betwarrioraffiliates.bet/_xW2WawVor-mg6egUu7vkL2Nd7ZgqdRLk/17/??coupon=combination|4305177706,4305177534,4305160228,4305224442,4305227257,4305224360,4305719582,4305719695,4305719588|0|replace',
   linkSuporte: 'https://t.me/suportecaumobot?start=6a8c9cf2c1a13ec6c4054fd1',
 
   /* ===== RODAPÉ ===== */
