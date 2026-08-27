@@ -358,6 +358,10 @@
       /* trava no piso: sem crescer, pra a rolagem ficar curta e o botão
          continuar perto da dobra */
       .art{flex:0 0 auto;height:min(78vw,359px);min-height:0;max-height:none}
+      /* Tela baixa nao cabe rosto e bilhete ao mesmo tempo. O corte desce
+         pra garantir a linha de valores do bilhete, que e a prova da
+         oferta — perde-se o alto da cabeca, nao o numero. */
+      .art img{object-position:50% 50%}
       .pitch{margin-bottom:0}
     }
     @media (prefers-reduced-motion:reduce){

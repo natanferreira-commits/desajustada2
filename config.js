@@ -9,7 +9,7 @@ window.LP_CONFIG = {
 
   /* ===== ARTE DO TOPO ===== */
   // Vertical, ideal 1080x1620 (2:3). Evite 9:16: sobra barra nas laterais.
-  arte: 'assets/arte-30k.png',
+  arte: 'assets/arte-100.webp',
   arteAjuste: 'cover',  // preenche a caixa; o corte é vertical, os bilhetes ficam inteiros
 
   /* ===== ABA DO NAVEGADOR =====
@@ -25,8 +25,8 @@ window.LP_CONFIG = {
   // *entre asteriscos* sai laranja, _entre underlines_ sai verde.
   // Use \n (barra + n) pra quebrar a linha da headline.
   headline: '*R$ 5.000* na sua mão\nou os _R$ 50,00_ de volta',
-  oddDe: 'odd 13.50',
-  oddPara: 'odd 102.7',
+  oddDe: 'odd 10.59',
+  oddPara: 'odd 139.8',
   ctaLabel: 'Quero esse bilhete',
 
   // Contagem regressiva. Desligada. Pra ligar, horário do primeiro jogo em
