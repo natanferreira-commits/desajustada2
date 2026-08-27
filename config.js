@@ -22,7 +22,9 @@ window.LP_CONFIG = {
   selo: 'Bilhete disponível',
 
   /* ===== PRIMEIRO FOLD ===== */
-  valor: 'R$ 3.000',       // vira "<valor> no seu bolso ou seu dinheiro de volta"
+  // *entre asteriscos* sai laranja, _entre underlines_ sai verde.
+  // Use \n (barra + n) pra quebrar a linha da headline.
+  headline: '*R$ 3.000* na sua mão\nou os _R$ 30_ de volta no Pix',
   oddDe: 'odd 13.50',
   oddPara: 'odd 102.7',
   ctaLabel: 'Quero esse bilhete',

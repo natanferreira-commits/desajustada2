@@ -139,7 +139,10 @@
     }
     h1{
       font-family:"Anton",Impact,sans-serif;font-weight:400;
-      font-size:clamp(28px,8.6vw,40px);line-height:1.03;
+      /* 7.9vw e o maior tamanho em que "ou os R$ 30 de volta no Pix" ainda
+         cabe numa linha so em tela de 320px. Acima disso a headline quebra
+         em 3 linhas sozinha. */
+      font-size:clamp(24px,7.9vw,36px);line-height:1.03;
       text-transform:uppercase;letter-spacing:.01em;
       text-shadow:0 2px 20px rgba(0,0,0,.7);   /* legível sobre a foto */
     }
@@ -395,7 +398,7 @@
     </div>
 
     <div class="pitch">
-      <h1><span class="prize" id="valor">R$ 3.000</span> no seu bolso<br>ou seu <span class="safe">dinheiro de volta</span></h1>
+      <h1 id="headline"><span class="prize">R$ 3.000</span> na sua mão<br>ou os <span class="safe">R$ 30</span> de volta no Pix</h1>
 
       <div class="odds">
         <div class="odd-box">
@@ -494,7 +497,25 @@
 
       /* ===== Primeiro fold ===== */
       set("selo-txt", C.selo);
-      set("valor", C.valor);
+
+      /* Headline: *entre asteriscos* sai laranja, _entre underlines_ sai verde
+         e \n vira quebra de linha. Escapa antes de montar, pra o config nunca
+         virar HTML solto na pagina. */
+      if (C.headline) {
+        var seguro = String(C.headline).replace(/[&<>"]/g, function(ch){
+          return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch];
+        });
+        var html = seguro
+          .split("*").map(function(parte, i){
+            return i % 2 ? '<span class="prize">' + parte + "</span>" : parte;
+          }).join("")
+          .split("_").map(function(parte, i){
+            return i % 2 ? '<span class="safe">' + parte + "</span>" : parte;
+          }).join("")
+          .replace(/\n/g, "<br>");
+        document.getElementById("headline").innerHTML = html;
+      }
+
       set("odd-de", C.oddDe);
       set("odd-para", C.oddPara);
       set("termos", C.termos);
