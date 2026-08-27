@@ -18,7 +18,7 @@ window.LP_CONFIG = {
 
   // Quanto puxar a arte pra cima, em % da altura da tela. Sobe os
   // bilhetes pra eles nao ficarem atras da headline. 0 desliga.
-  arteSubir: '7%',  // preenche a caixa; o corte é vertical, os bilhetes ficam inteiros
+  arteSubir: '0%',  // preenche a caixa; o corte é vertical, os bilhetes ficam inteiros
 
   /* ===== ABA DO NAVEGADOR =====
      Título que aparece na aba e quando o link é compartilhado.
