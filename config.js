@@ -12,7 +12,7 @@ window.LP_CONFIG = {
   // O conteudo dela (fita, rosto, bilhetes) precisa terminar ate ~60%
   // da altura: abaixo disso mora o texto da pagina.
   arte: 'assets/arte-30.webp',
-  arteAjuste: 'contain',
+  arteAjuste: 'cover',
 
   // Enquadramento vertical da arte de fundo. Menor puxa a imagem pra
   // cima, maior puxa pra baixo. Ex: '30%', '42%', '55%'.
