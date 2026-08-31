@@ -11,7 +11,7 @@ window.LP_CONFIG = {
   // Arte vertical 1080x1920. Ela aparece inteira, sem corte lateral.
   // O conteudo dela (fita, rosto, bilhetes) precisa terminar ate ~60%
   // da altura: abaixo disso mora o texto da pagina.
-  arte: 'assets/arte-100.webp',
+  arte: 'assets/arte-30.webp',
   arteAjuste: 'contain',
 
   // Enquadramento vertical da arte de fundo. Menor puxa a imagem pra
@@ -35,8 +35,8 @@ window.LP_CONFIG = {
   // *entre asteriscos* sai laranja, _entre underlines_ sai verde.
   // Use \n (barra + n) pra quebrar a linha da headline.
   headline: '*R$ 3.000* na sua mão\nou os _R$ 30_ de volta',
-  oddDe: 'odd 10.59',
-  oddPara: 'odd 139.8',
+  oddDe: 'odd 13.50',
+  oddPara: 'odd 102.7',
   ctaLabel: 'Quero esse bilhete',
 
   // Contagem regressiva. Desligada. Pra ligar, horário do primeiro jogo em
