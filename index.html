@@ -91,6 +91,10 @@
        glow — a arte aparece como ela e. */
     .art{
       flex:1 1 auto;min-height:84px;
+      /* Teto na altura exata da imagem (847x985 = 1.163x a largura).
+         Sem ele a caixa cresce alem da arte e sobra faixa escura
+         vazia embaixo dela, que empurra a headline pra baixo. */
+      max-height:calc((min(100vw,460px) - 32px) * 1.163);
       position:relative;display:flex;
       border-radius:14px;overflow:hidden;
     }
@@ -178,6 +182,7 @@
 
     /* seta convidando a rolar — sem ela o fold fechado esconde as seções */
     .maisabaixo{
+      margin-top:auto;
       flex:0 0 auto;
       display:flex;align-items:center;justify-content:center;gap:6px;
       padding-top:8px;
