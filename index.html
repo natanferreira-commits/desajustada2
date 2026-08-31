@@ -57,7 +57,7 @@
       position:relative;                   /* âncora da arte de fundo */
       height:100svh; height:100dvh;
       max-width:460px;margin:0 auto;
-      display:flex;flex-direction:column;justify-content:flex-end;
+      display:flex;flex-direction:column;
       padding:0 16px 10px;
     }
 
@@ -90,12 +90,7 @@
        ao texto, entao o texto nunca sobe por cima dela. Sem veu e sem
        glow — a arte aparece como ela e. */
     .art{
-      /* Altura travada em 1.08x a largura: e onde o bilhete termina na
-         arte. Sem isso a caixa cresce e entra a faixa escura que sobra
-         abaixo do bilhete, empurrando o texto pra baixo. */
-      flex:0 1 auto;
-      height:calc((min(100vw,460px) - 32px) * 1.08);
-      min-height:84px;
+      flex:1 1 auto;min-height:84px;
       position:relative;display:flex;
       border-radius:14px;overflow:hidden;
     }
@@ -398,7 +393,7 @@
     </div>
 
     <div class="art" id="art">
-      <img id="art-img" src="assets/arte-30.webp" width="847" height="1272" alt="" fetchpriority="high" decoding="async" />
+      <img id="art-img" src="assets/arte-30.webp" width="847" height="985" alt="" fetchpriority="high" decoding="async" />
       <span class="glow"></span>
     </div>
 
